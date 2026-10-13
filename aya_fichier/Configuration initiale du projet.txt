@@ -1,0 +1,58 @@
+1-définition de le  bibiothèque.
+1️⃣ React est une librairie et non un framework
+React ne fournit que le minimum :
+
+Rendu des composants (useState, useEffect...)
+Mise à jour du DOM de manière optimisée
+Il n'impose pas de système de routage, de gestion des formulaires, ou de graphiques. C'est à toi d'ajouter ce dont tu as besoin.
+
+2-library vs framework.
+# Créer un nouveau projet React using vite (tool)
+vite : définition.
+  commande :npm create vite@latest 
+√ Select a framework: » React                            
+√ Select a variant: » TypeScript      
+ commande : cd vite-project
+ commande :npm install (node_modules)    
+ commande : npm run dev
+
+
+
+# Ajouter le framework TailwindCSS
+ commande : npm install tailwindcss @tailwindcss/vite
+
+# Ajouter le framework HeadlessUi(Completely unstyled, fully accessible UI components, 
+designed to integrate beautifully with Tailwind CSS)
+ commande :npm install @headlessui/react
+
+# Ajouter react routing dom  :
+React Router DOM est une bibliothèque JavaScript qui permet de gérer le routage dans les applications React, 
+facilitant ainsi la navigation entre différentes pages ou vues sans recharger entièrement la page.
+npm i react-router-
+
+# Ajouter rechart 
+ commande : npm install recharts
+
+# Ajouter react icons 
+ commande : npm install react-icons --save
+
+# Ajouter react-router-dom
+ npm install react-router-dom
+📌 React Router DOM : Navigation dans une application React
+🔹 React Router DOM est une bibliothèque permettant de gérer la navigation dans une application React monopage 
+(SPA - Single Page Application). Elle permet de créer plusieurs pages sans recharger entièrement le site.
+
+# Ajouter react hook form : Performant, flexible and extensible forms with easy-to-use validation.
+  commande : npm install react-hook-form
+
+# install sonner 
+ commande : npm i sooner
+
+la difference entre ts et tsx 
+.ts Files: These are standard TypeScript files used for writing code that doesn't involve JSX. 
+They are suitable for defining functions, classes, interfaces, and other TypeScript constructs.
+
+.tsx Files: These files are an extension of .ts and are specifically designed to support JSX syntax. 
+JSX allows developers to write HTML-like code within JavaScript or TypeScript, which is particularly useful when working with React components.
+git config --global user.name "Marouane"
+git config --global user.email "manouzimaro@gmail.com"

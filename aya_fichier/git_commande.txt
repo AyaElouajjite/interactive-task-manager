@@ -1,0 +1,30 @@
+# Vérifier les fichiers modifiés
+git status
+
+# Initialiser le dépôt Git :
+git init
+
+# Ajouter tous les fichiers (modifiés, supprimés, ajoutés)
+git add .
+
+# Valider les modifications avec un message clair
+git commit -m "Ajout des nouvelles fonctionnalités"
+
+#Ajouter le dépôt distant GitHub : Copie l'URL de ton dépôt GitHub 
+(elle ressemble à ça : https://github.com/ton-username/ton-depot.git). 
+Ensuite, ajoute cette URL en tant que dépôt distant :
+git remote add origin https://github.com/ayada-best/task-manager
+
+
+# Envoyer les changements vers le dépôt distant
+git push origin main  # (ou "master" selon ton repo)
+
+#récuperer d'après une autre pc 
+git pull origin main
+
+git add . && git commit -m "Description" && git push origin main
+
+
+
+
+
