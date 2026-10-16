@@ -1,4 +1,4 @@
-# ✅ Interactive Task Manager — Gestionnaire de tâches interactif
+# Interactive Task Manager — Application de gestion de tâches
 
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
@@ -6,66 +6,72 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 
-Application web **full-stack** de gestion de tâches : création, organisation par glisser-déposer, suivi de l'avancement et tableau de bord statistique.
+Application web full-stack de gestion de tâches, composée d'une interface React en TypeScript et d'une API REST Node.js connectée à une base MySQL. Elle permet d'organiser les tâches sur un tableau Kanban, de suivre leur avancement et de consulter des statistiques.
 
----
+## Fonctionnalités
 
-## ✨ Fonctionnalités
+- Inscription et connexion sécurisées par jeton **JWT**
+- Réinitialisation du mot de passe par e-mail et changement de mot de passe
+- Création, modification et suppression de tâches, avec sous-tâches et niveaux de priorité
+- Tableau **Kanban** avec glisser-déposer entre les colonnes *À faire*, *En cours* et *Terminé*
+- Vue en liste avec tri
+- Tableau de bord statistique
+- Corbeille avec restauration ou suppression définitive
 
-- 🔐 **Authentification** : inscription, connexion par **JWT**, mots de passe chiffrés (bcrypt)
-- 🔑 **Mot de passe oublié** : réinitialisation par e-mail (Nodemailer) et changement de mot de passe
-- 📝 **Gestion des tâches** : création, modification, sous-tâches, priorités (haute / moyenne / basse)
-- 🗂️ **Vue tableau (Kanban)** avec **glisser-déposer** entre les colonnes *À faire*, *En cours* et *Terminé*
-- 📋 **Vue liste** et tri des tâches
-- 📊 **Tableau de bord** avec graphiques (Recharts)
-- 🗑️ **Corbeille** : restauration ou suppression définitive des tâches
-- 🔔 Notifications et retours visuels (Sonner)
+## Points techniques
 
-## 🛠️ Technologies
+- Architecture client / serveur découplée communiquant via une **API REST**
+- Authentification par **JWT** et hachage des mots de passe avec **bcrypt**
+- Envoi d'e-mails transactionnels avec **Nodemailer**
+- Gestion de l'état global avec **Redux Toolkit**
+- Glisser-déposer accessible avec **dnd-kit**
+- Visualisation de données avec **Recharts**
+- Interface responsive construite avec **Tailwind CSS**
+- Configuration externalisée par variables d'environnement
 
-| Couche | Outils |
+## Stack technique
+
+| Domaine | Technologies |
 |---|---|
 | Frontend | React 18, TypeScript, Vite, Tailwind CSS, Redux Toolkit, React Router, dnd-kit, Recharts, Axios |
-| Backend | Node.js, Express, JWT, bcryptjs, Nodemailer |
+| Backend | Node.js, Express, JSON Web Token, bcryptjs, Nodemailer |
 | Base de données | MySQL |
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 interactive-task-manager/
 ├── back/                 # API REST Express
 │   ├── config/db.js      # Connexion MySQL
-│   ├── routers/          # Routes : auth, signup, tasks, trash, mot de passe…
+│   ├── routers/          # Authentification, tâches, corbeille, mot de passe
 │   └── index.js          # Point d'entrée du serveur
 ├── vite-project/         # Application React
 │   └── src/
-│       ├── components/   # Composants UI (BoardView, TaskCard, Chart…)
+│       ├── components/   # Composants d'interface
 │       ├── dnd/          # Glisser-déposer
-│       ├── pages/        # Dashboard, tâches, corbeille, connexion…
+│       ├── pages/        # Tableau de bord, tâches, corbeille, connexion
 │       └── redux/        # Store et slices
-└── task_manager.sql      # Script de création de la base
+└── task_manager.sql      # Schéma de la base de données
 ```
 
-## 🚀 Installation
+## Installation
 
-**Prérequis :** Node.js 18+, MySQL
+**Prérequis :** Node.js 18 ou supérieur, MySQL.
 
-### 1. Base de données
-
-Importer le fichier `task_manager.sql` dans MySQL (via phpMyAdmin ou en ligne de commande) :
+**1. Base de données**
 
 ```bash
 mysql -u root -p < task_manager.sql
 ```
 
-### 2. Backend
+**2. Backend**
 
 ```bash
 cd back
 npm install
 ```
 
-Configurer le fichier `back/.env` :
+Renseigner le fichier `back/.env` :
 
 ```env
 PORT=5000
@@ -74,18 +80,18 @@ DB_USER=root
 DB_PASS=
 DB_PORT=3306
 DB_NAME=task
-JWT_SECRET=votre_secret
-EMAIL_USER=votre_adresse@gmail.com
-EMAIL_PASS=votre_mot_de_passe_application
+JWT_SECRET=<secret>
+EMAIL_USER=<adresse e-mail>
+EMAIL_PASS=<mot de passe d'application>
 ```
 
 ```bash
 npm start
 ```
 
-L'API démarre sur **http://localhost:5000**.
+L'API est accessible sur `http://localhost:5000`.
 
-### 3. Frontend
+**3. Frontend**
 
 ```bash
 cd vite-project
@@ -93,21 +99,21 @@ npm install
 npm run dev
 ```
 
-L'application est disponible sur **http://localhost:3000**.
+L'application est accessible sur `http://localhost:3000`.
 
-## 🔌 Principales routes de l'API
+## API
 
 | Route | Description |
 |---|---|
 | `/api/signup` | Inscription |
-| `/api/login` | Connexion (JWT) |
-| `/api/tasks` | CRUD des tâches |
+| `/api/login` | Connexion |
+| `/api/tasks` | Gestion des tâches |
 | `/api/trash-router` | Corbeille |
-| `/api/deleteAll` | Vider la corbeille |
-| `/api/change-password` | Changer le mot de passe |
+| `/api/deleteAll` | Vidage de la corbeille |
+| `/api/change-password` | Changement de mot de passe |
 | `/api/forgot-password` | Demande de réinitialisation |
 | `/api/reset-password` | Réinitialisation du mot de passe |
 
-## 👩‍💻 Auteur
+## Contact
 
-**Aya Elouajjite** — [@AyaElouajjite](https://github.com/AyaElouajjite)
+**Aya Elouajjite** — [github.com/AyaElouajjite](https://github.com/AyaElouajjite)
